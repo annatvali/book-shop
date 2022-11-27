@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="../../assets/styles/normalize.css">
+    <link rel="stylesheet" href="../order/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body id="body">
+    <div class="wrapper">
+        <div class="toHomepage">
+            <a class="toHomepage__link" href="../home/index.html">&lArr; Home page</a>
+        </div>
+        <form class="form" action="">
+            <h1 class="form__heading">Payment Form</h1>
+            <fieldset class="fieldset">
+                <legend class="fieldset__legend">Customer Name</legend>
+                <label for="name">Name</label>
+                <input type="text" id="userName" name="name" placeholder="Your Name" pattern="^[A-Za-z]{4,}$" required>
+                <label for="surname">Surname</label>
+                <input type="text" id="surname" name="surname" placeholder="Your Surname" pattern="^[A-Za-z]{5,}$"
+                    required>
+            </fieldset>
+
+            <fieldset class="fieldset">
+                <legend class="fieldset__legend">Delivery Date</legend>
+                <label for="deliveryDate">Delivery Date</label>
+                <input type="date" id="deliveryDate" name="deliveryDate" required>
+            </fieldset>
+
+            <fieldset class="fieldset">
+                <legend class="fieldset__legend">Delivery Address</legend>
+                <label for="street">Street</label>
+                <input type="text" id="street" name="street" pattern="^[A-Za-z0-9]{5,}$" required>
+
+                <label for="houseNumber">House Number</label>
+                <input type="number" id="houseNumber" name="houseNumber" min="1" required>
+
+                <label for="flatNumber">Flat Number</label>
+                <input type="number" id="flatNumber" name="flatNumber" pattern="^[0-9]*[\d -]+[0-9]$" required>
+            </fieldset>
+
+            <fieldset class="fieldset">
+                <legend class="fieldset__legend">Payment Method</legend>
+                <label for="paymentCash" required>Cash</label>
+                <input type="radio" id="paymentCash" name="paymentType" required checked>
+                <label for="paymentCard">Card</label>
+                <input type="radio" id="paymentCard" name="paymentType">
+            </fieldset>
+
+            <fieldset class="fieldset">
+                <legend class="fieldset__legend gifts__legend">Choose 2 Gifts</legend>
+                <label for="giftnPack">pack as a gift</label>
+                <input type="checkbox" id="pack" name="gift" class="gift" checked>
+                <label for="postCard">add postcard</label>
+                <input type="checkbox" id="postCard" name="gift" class="gift" checked>
+                <label for="discount">provide 2% discount to the next time</label>
+                <input type="checkbox" id="discount" name="gift" class="gift">
+                <label for="brandedGift">branded pen or pencil</label>
+                <input type="checkbox" id="brandedGift" name="gift" class="gift">
+            </fieldset>
+
+            <input type="submit" id="btn-complete" class="btn-complete" value="Complete">
+        </form>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>

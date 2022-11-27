@@ -18,7 +18,7 @@ headerFragment.appendChild(header);
 wrapper.appendChild(header);
 
 //Create catalog from books.js data start
-
+const sectionShoppingFragment = document.createDocumentFragment();
 const booksJSON = fetch('./books.json')
   .then((response) => {
     return response.json();
@@ -30,6 +30,7 @@ const booksJSON = fetch('./books.json')
     // selectedBooksList = document.querySelectorAll('.totalPrice');
 
     const sectionShopping = document.createElement('section');
+    sectionShoppingFragment.appendChild(sectionShopping);
     wrapper.appendChild(sectionShopping);
 
     const shoppingModal = document.createElement('div');
@@ -62,6 +63,7 @@ const booksJSON = fetch('./books.json')
     shoppingBtn = document.createElement('button');
     shoppingBtn.textContent = `Shopping Bag `;
     shoppingBtn.className = 'shoppingBtn';
+    shoppingBtn.id = 'shoppingBtn';
     sectionShopping.appendChild(shoppingBtn);
 
     function openModal() {
@@ -78,14 +80,13 @@ const booksJSON = fetch('./books.json')
     shoppingBtn.addEventListener('click', openModal);
     shoppingModalCloseBtn.addEventListener('click', closeModal);
 
-    shoppingBtn.addEventListener('click', openModal);
-
     // create shopping bag seciton -- end
     const catalogueFragment = document.createDocumentFragment();
     const booksCatalogue = document.createElement('section');
     booksCatalogue.classList.add('books-catalogue');
     books.forEach((book) => {
       const bookCard = document.createElement('div');
+      bookCard.setAttribute('draggable', true);
       bookCard.classList.add('book-card');
       booksCatalogue.appendChild(bookCard);
 
@@ -175,7 +176,7 @@ const booksJSON = fetch('./books.json')
 
         const addedBookPrice = document.createElement('div');
         addedBookPrice.className = 'addedBookPrice';
-        addedBookPrice.textContent = `${book.price} $`;
+        addedBookPrice.textContent = book.price + `$`;
         addedBookInfo.appendChild(addedBookPrice);
 
         function deleteBookHendler() {
@@ -185,6 +186,7 @@ const booksJSON = fetch('./books.json')
       }
 
       btnAdd.addEventListener('click', addHendler);
+      catalogueFragment.appendChild(booksCatalogue);
       wrapper.appendChild(booksCatalogue);
       // create popup modal content
       const popupModal = document.createElement('div');
@@ -228,13 +230,17 @@ const booksJSON = fetch('./books.json')
       showMore.addEventListener('click', openModal);
       closeBtn.addEventListener('click', closeModal);
     });
+
     // create footer
+    const footerFragment = document.createDocumentFragment();
     const footer = document.createElement('footer');
     footer.className = 'footer';
-    wrapper.appendChild(footer);
 
     const copyRight = document.createElement('p');
     copyRight.className = 'copyRight';
     copyRight.textContent = `Made by Ana ©`;
     footer.appendChild(copyRight);
+
+    footerFragment.appendChild(footer);
+    wrapper.appendChild(footer);
   });
